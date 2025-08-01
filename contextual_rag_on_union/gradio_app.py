@@ -12,7 +12,7 @@ def stream_query_to_fastapi(query, history):
             os.environ["FASTAPI_ENDPOINT"] + "/chat",
             json={"query": query, "history": history},
             stream=True,
-        )
+        timeout=60)
         response.raise_for_status()
 
         result = ""
